@@ -3,7 +3,10 @@ package com.springboot.demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 /**
  * @Description 
  * @Author Maweijun 
@@ -13,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class DemoApplication {
-    @RequestMapping("/")
-    String index() {
-        return "Hello Spring Boot";
+
+    @RequestMapping(value = "/initpage", method = RequestMethod.GET)
+    public ModelAndView doView() {
+        ModelAndView mv = new ModelAndView("index");
+        return mv;
     }
     @RequestMapping("/first")
     String first() {
